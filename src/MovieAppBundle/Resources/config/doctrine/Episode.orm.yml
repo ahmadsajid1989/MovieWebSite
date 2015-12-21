@@ -1,0 +1,31 @@
+MovieAppBundle\Entity\Episode:
+    type:   entity
+    repositoryClass: MovieAppBundle\Repository\EpisodeRepository
+    table:  episodes
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type:       string
+            length:     120
+        duration:
+            type: time
+            nullable: true
+        sequence_count:
+            type:       string
+            nullable:   true
+            length:     3
+        views:
+            type:       integer
+            nullable:   true
+    manyToOne:
+        movie:
+            targetEntity: Movie
+            inversedBy:   episodes
+            joinColumn:
+                name:                   movie_id
+                referencedColumnName:   id
+                onDelete:               CASCADE

@@ -1,0 +1,30 @@
+movies:
+    path:     /
+    defaults: { _controller: "MovieAppBundle:Movie:index" }
+
+movies_show:
+    path:     /{id}/show
+    defaults: { _controller: "MovieAppBundle:Movie:show" }
+
+movies_new:
+    path:     /new
+    defaults: { _controller: "MovieAppBundle:Movie:new" }
+
+movies_create:
+    path:     /create
+    defaults: { _controller: "MovieAppBundle:Movie:create" }
+    methods:  POST
+
+movies_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MovieAppBundle:Movie:edit" }
+
+movies_update:
+    path:     /{id}/update
+    defaults: { _controller: "MovieAppBundle:Movie:update" }
+    methods:  [POST, PUT]
+
+movies_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MovieAppBundle:Movie:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,15 @@
+MovieAppBundle\Entity\Tags:
+    type: entity
+    table: tags
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 85
+            unique: true
+
+
+

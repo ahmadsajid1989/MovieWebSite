@@ -1,0 +1,17 @@
+movie_app_admin_category:
+    resource: "@MovieAppBundle/Resources/config/routing/category.yml"
+    prefix:   /admin/category
+
+movie_app_admin_movies:
+    resource: "@MovieAppBundle/Resources/config/routing/movie.yml"
+    prefix:   /admin/movies
+
+movie_app_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MovieAppBundle:Default:index }
+
+movie_app_category:
+    path:     /category/{id}
+    defaults:  { _controller:  MovieAppBundle:Category:content, id: 1 }
+    requirements:
+        id:  \d+

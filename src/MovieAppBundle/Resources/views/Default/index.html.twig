@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+{% block body -%}
+    <div class="row">
+        <div class="col-sm-12">
+            {% image '@MovieAppBundle/Resources/public/images/starwars.jpg' %}
+            <img src="{{ asset_url }}" alt="Example" class="img-responsive" />
+            {% endimage %}
+        </div>
+    </div>
+
+    <div id="category_masonry" class="row grid-masonry">
+        <div class="grid-item col-sm-4 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/peanuts.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">Movie of the day</h3>
+            </div>
+        </div>
+        <div class="grid-item col-sm-4 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/aamarami.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">Bangla Movies</h3>
+            </div>
+        </div>
+
+
+        <div class="grid-item col-sm-4 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/martian2015.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">English Movies</h3>
+            </div>
+        </div>
+        <div class="grid-item col-sm-4 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/bajirao.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">Hindi Movies</h3>
+            </div>
+        </div>
+        <div class="grid-item col-sm-4 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/tvseries.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">Tv Series</h3>
+            </div>
+        </div>
+
+       <div class="grid-item col-sm-4 box">
+      <img src="{{ asset('bundles/movieapp/images/posters/musicvideo.jpg') }}" class="img-responsive">
+      <div class="overbox">
+          <h3 class="title overtext">Music Videos</h3>
+      </div>
+  </div>
+    </div>
+
+{% endblock %}

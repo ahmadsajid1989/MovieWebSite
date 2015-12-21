@@ -1,0 +1,105 @@
+MovieAppBundle\Entity\Movie:
+    type: entity
+    repositoryClass: MovieAppBundle\Repository\ContentRepository
+    table: movie
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        name:
+            type: string
+            unique: true
+            length: 120
+        release_date:
+            type: date
+            nullable: true
+        language:
+            type: string
+            length: 50
+            nullable: true
+        descripton:
+            type: string
+            length: 255
+            nullable: true
+        duration:
+            type: time
+            nullable: true
+        views:
+            type: integer
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: true
+        updated_at:
+            type: datetime
+            nullable: true
+        award:
+            type: text
+            nullable: true
+        country:
+            type: string
+            nullable: true
+        url:
+            type: string
+            length: 255
+        imageName:
+            type: string
+            length: 255
+        publisher:
+            type: string
+            nullable: true
+        producer:
+            type: string
+            nullable: true
+        director:
+            type: string
+            nullable: true
+        cast:
+            type: string
+        file_format:
+            type: string
+            length: 6
+        rating:
+            type: integer
+            nullable: true
+
+    manyToOne:
+        category:
+            targetEntity: Category
+            inversedBy: movies
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+    manyToMany:
+        tags:
+              targetEntity: Tags
+              joinTable:
+                  name: publish_tags
+                  joinColumns:
+                       movie_id:
+                            referencedColumnName: id
+                  inverseJoinColumns:
+                       tags_id:
+                            referencedColumnName: id
+        genre:
+              targetEntity: Genre
+              joinTable:
+                  name: movie_genre
+                  joinColumns:
+                       movie_id:
+                            referencedColumnName: id
+                  inverseJoinColumns:
+                       genre_id:
+                            referencedColumnName: id
+
+    oneToMany:
+        episodes:
+            targetEntity:   Episode
+            mappedBy:       movie
+            cascade:        [persist,remove]
+
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue ]
+        preUpdate:  [ setUpdatedAtValue ]

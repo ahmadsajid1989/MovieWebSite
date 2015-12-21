@@ -1,0 +1,8 @@
+iit_movie_app:
+    resource: "@MovieAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+iit_movie_app_homepage:
+    path:     /
+    defaults: { _controller: MovieAppBundle:Default:index }

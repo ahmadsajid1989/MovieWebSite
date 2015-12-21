@@ -1,0 +1,5 @@
+MovieAppBundle\Entity\Movie:
+    properties:
+            file:
+                - Image:
+                    mimeTypes: image/*

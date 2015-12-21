@@ -1,0 +1,21 @@
+MovieAppBundle\Entity\Category:
+    type: entity
+    table: category
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 85
+            unique: true
+        slug:
+            type: string
+            length: 85
+            unique: true
+
+    oneToMany:
+        movies:
+            targetEntity: Movie
+            mappedBy: category

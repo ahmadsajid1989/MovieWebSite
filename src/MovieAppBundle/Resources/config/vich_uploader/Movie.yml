@@ -1,0 +1,4 @@
+MovieAppBundle\Entity\Movie:
+    image:
+         mapping:           movie_image
+         filename_property: image_name
