@@ -1,0 +1,12 @@
+MovieAppBundle\Entity\UserGroup:
+    type:   entity
+    table:  user_groups
+    id:
+        id:
+            type:   integer
+            generator:
+                strategy: AUTO
+    manyToMany:
+        users:
+            targetEntity:   User
+            mappedBy:       groups

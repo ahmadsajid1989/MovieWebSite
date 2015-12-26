@@ -8,6 +8,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Movie
+ *
  * @Vich\Uploadable
  */
 class Movie
@@ -77,7 +78,7 @@ class Movie
      *
      * @Vich\UploadableField(mapping="movie_image", fileNameProperty="imageName")
      *
-     * @var File
+     * @var string
      */
     private $imageFile;
 
@@ -137,6 +138,8 @@ class Movie
      * @var \Doctrine\Common\Collections\Collection
      */
     private $genre;
+
+    private $file;
 
     /**
      * Constructor
@@ -739,6 +742,6 @@ class Movie
 
     public function __toString()
     {
-        return $this->getTitle() ? $this->getTitle() : "";
+        return $this->getName() ? $this->getName() : "";
     }
 }

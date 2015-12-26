@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new MovieAppBundle\MovieAppBundle(),
             new Evheniy\TwitterBootstrapBundle\TwitterBootstrapBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
 
         );
 

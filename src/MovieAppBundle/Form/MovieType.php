@@ -35,8 +35,8 @@ class MovieType extends AbstractType
             ),'label' => 'Origin Country'))
             ->add('url')
             ->add('imageFile', 'file', array('label' => 'Upload Thumbnail'))
-            ->add('publisher', 'text', array('label' => 'Publishing Company','required'=> false))
-            ->add('producer','text', array('label' => 'Producery','required'=> false))
+            ->add('publisher', 'text', array('label' => 'Distributor','required'=> false))
+            ->add('producer','text', array('label' => 'Producer','required'=> false))
             ->add('director','text', array('label' => 'Director','required'=> false))
             ->add('cast','text', array('label' => 'Actor/Actress'))
             ->add('file_format','choice',array('choices'=> array(

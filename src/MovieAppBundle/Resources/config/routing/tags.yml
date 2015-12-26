@@ -1,0 +1,30 @@
+tags:
+    path:     /
+    defaults: { _controller: "MovieAppBundle:Tags:index" }
+
+tags_show:
+    path:     /{id}/show
+    defaults: { _controller: "MovieAppBundle:Tags:show" }
+
+tags_new:
+    path:     /new
+    defaults: { _controller: "MovieAppBundle:Tags:new" }
+
+tags_create:
+    path:     /create
+    defaults: { _controller: "MovieAppBundle:Tags:create" }
+    methods:  POST
+
+tags_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MovieAppBundle:Tags:edit" }
+
+tags_update:
+    path:     /{id}/update
+    defaults: { _controller: "MovieAppBundle:Tags:update" }
+    methods:  [POST, PUT]
+
+tags_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MovieAppBundle:Tags:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+{% block body -%}
+{{ dump(entity) }}
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{ entity.name }} <small>{{ entity.duration|date("H:i") }} min</small></h2>
+                    <small>{% for genre in entity.genre %}
+                            {{ genre.name }}
+                        {% endfor %} | Release: {{ entity.releaseDate|date("d F, Y") }}
+                    </small>
+                </div>
+            </div>
+            <div class="row m-t-md">
+                <div class="col-md-3"><img src="{{ asset('/images/movies/') }}{{ entity.imageName|default('300x300.png')}}" class="img-responsive"></div>
+                <div class="col-md-9">
+                    <p>{{ entity.descripton }}</p>
+                    <p><strong>Cast:</strong> {{ entity.cast }}</p>
+                    <p><strong>Director:</strong> {{ entity.director }}</p>
+                    <p><strong>Producer:</strong> {{ entity.producer }}</p>
+                    <p><strong>Country:</strong> {{ entity.country }}</p>
+                    <p><strong>Tags:</strong>{% for tags in entity.tags %}
+                        {{ tags.name }} {% endfor %} </p>
+                </div>
+            </div>
+            <div class="row m-t-md">
+                <div class="col-md-12">
+                    {% if app.user %}
+                        <a href="{{ entity.url }}">Download</a>
+                    {% else %}
+                        Please  <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }} to initiate download</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <img src="http://placehold.it/300x600" class="img-responsive m-b-lg">
+            <img src="http://placehold.it/300x300" class="img-responsive m-b-lg">
+        </div>
+    </div>
+{% endblock %}

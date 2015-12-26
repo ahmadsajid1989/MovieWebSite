@@ -1,3 +1,11 @@
+movie_app_tags:
+    resource: "@MovieAppBundle/Resources/config/routing/tags.yml"
+    prefix:   /admin/tags
+
+movie_app_genre:
+    resource: "@MovieAppBundle/Resources/config/routing/genre.yml"
+    prefix:   /admin/genre
+
 movie_app_admin_category:
     resource: "@MovieAppBundle/Resources/config/routing/category.yml"
     prefix:   /admin/category
@@ -12,6 +20,9 @@ movie_app_homepage:
 
 movie_app_category:
     path:     /category/{id}
-    defaults:  { _controller:  MovieAppBundle:Category:content, id: 1 }
-    requirements:
-        id:  \d+
+    defaults:  { _controller:  MovieAppBundle:Category:content }
+
+
+movie_app_movie:
+    path:     /movie/{id}
+    defaults:  { _controller:  MovieAppBundle:Movie:moviedetails }

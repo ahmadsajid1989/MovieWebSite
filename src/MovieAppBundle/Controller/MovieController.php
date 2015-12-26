@@ -221,4 +221,21 @@ class MovieController extends Controller
             ->getForm()
         ;
     }
+
+    public function movieDetailsAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $repository = $em->getRepository('MovieAppBundle:Movie');
+
+        $movies = $repository->findOneBy(
+            array('id' => $id)
+        );
+
+        return $this->render('MovieAppBundle:Movie:movies.html.twig', array(
+            'entity' => $movies,
+        ));
+
+
+    }
 }

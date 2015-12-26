@@ -1,1 +1,99 @@
-{{ dump(entities) }}
+{% extends '::base.html.twig' %}
+{% block body -%}
+    {#{{ dump(entities) }}#}
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Bangla Movies</h2>
+        </div>
+    </div>
+
+    <div class="row m-b-lg">
+        <div class="col-md-9">
+            <div class="row">
+                {% for entity in entities %}
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href="{{ path('movie_app_movie', { 'id': entity.id }) }}">
+                                    <img src="{{ asset('bundles/movieapp/images/posters/aamarami.jpg') }}" class="img-thumbnail img-responsive">
+                                </a>
+                            </div>
+                            <div class="col-md-7">
+                                <h4><a href="{{ path('movie_app_movie', { 'id': entity.id }) }}">{{ entity.name }}</a> - {{ entity.fileFormat }} rip <br/>
+                                    {% for genre in entity.genre %}
+
+                                        <small>{{ genre.name }}</small>
+
+                                    {% endfor %}
+                                </h4>
+                                <p>Director: {{ entity.director }}</p>
+                                <p>Cast: {{ entity.cast }}</p>
+                                <p>Tags:</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <img src="http://placehold.it/300x600" class="img-responsive m-b-lg">
+            <img src="http://placehold.it/300x150" class="img-responsive">
+        </div>
+    </div>
+
+
+    <div class="row m-t-lg">
+        <div class="col-md-6">
+            <h2>All Categories</h2>
+        </div>
+        <div class="col-md-6 text-right">
+            Social icons
+        </div>
+    </div>
+    <div class="row grid-carousel">
+        <div class="col-sm-3 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/peanuts.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">Movie of the day</h3>
+            </div>
+        </div>
+        <div class="col-sm-3 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/aamarami.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">Bangla Movies</h3>
+            </div>
+        </div>
+        <div class="col-sm-3 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/martian2015.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">English Movies</h3>
+            </div>
+        </div>
+        <div class="col-sm-3 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/hindi.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">Hindi Movies</h3>
+            </div>
+        </div>
+        <div class=" col-sm-3 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/tvseries.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">Tv Series</h3>
+            </div>
+        </div>
+
+        <div class="col-sm-3 box">
+            <img src="{{ asset('bundles/movieapp/images/posters/musicvideo.jpg') }}" class="img-responsive">
+            <div class="overbox">
+                <h3 class="title overtext">Music Videos</h3>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

@@ -9,7 +9,9 @@
         {% stylesheets 'bundles/movieapp/css/*' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
-
+        <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -20,9 +22,9 @@
         <![endif]-->
     </head>
     <body>
-    <div class="container-fluid">
+    <div class="container">
         <!--block navigation-->
-        <nav class="navbar navbar-inverse navbar-fixed-top container">
+        <nav class="navbar  navbar-container ">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -35,10 +37,12 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li class="dropdown">
+                        <li class="active"><a href="#">Bangla Movies</a></li>
+                        <li><a href="#about">English Movies</a></li>
+                        <li><a href="#contact">Hindi Movies</a></li>
+                        <li><a href="#contact">Tamil Movies</a></li>
+                        <li><a href="#contact">Tv Series</a></li>
+                        {#<li class="dropdown">
                             <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
@@ -49,10 +53,11 @@
                                 <li><a href="#">Separated link</a></li>
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
-                        </li>
+                        </li>#}
                     </ul>
+                    <div class="navbar-right">
                         <!-- Define your search form -->
-                        <form class="navbar-form navbar-right" role="search">
+                        <form class="navbar-form pull-left" role="search">
                             <!-- Define a button to toggle the search area -->
                             <button id='search-button' class='btn btn-default '><span class='glyphicon glyphicon-search'></span></button>
                             <!-- Create your entire search form -->
@@ -63,6 +68,16 @@
                                 </div>
                             </div>
                         </form>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                            <a href="{{ path('fos_user_security_logout') }}" class="btn-danger btn">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                        {% endif %}
+                    </div>
+
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
@@ -83,11 +98,40 @@
                 e.preventDefault();
                 $("#search-button, #search-form").toggle();
             });
-            $('#category_masonry').masonry({
-                // options
-                itemSelector: '.grid-item',
-                gutter : 0
-            });
+            $('.grid-carousel').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                /*autoplay: true,*/
+                autoplaySpeed: 2000,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                ]
+        });
            /* var $container = $('#category_masonry');
 // init
             $container.packery({

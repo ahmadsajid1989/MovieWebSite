@@ -1,53 +1,85 @@
 {% extends '::base.html.twig' %}
 {% block body -%}
-    <div class="row">
+    {#<div class="row">
         <div class="col-sm-12">
             {% image '@MovieAppBundle/Resources/public/images/starwars.jpg' %}
             <img src="{{ asset_url }}" alt="Example" class="img-responsive" />
             {% endimage %}
         </div>
     </div>
-
-    <div id="category_masonry" class="row grid-masonry">
-        <div class="grid-item col-sm-4 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/peanuts.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">Movie of the day</h3>
-            </div>
+#}
+    <div class="row">
+        <div class="col-md-6">
+            <h2><span class="styled">All</span> Categories</h2>
         </div>
-        <div class="grid-item col-sm-4 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/aamarami.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">Bangla Movies</h3>
-            </div>
+        <div class="col-md-6 text-right social">
+            <a href="http://www.facebook.com" class="fb" target="_blank"><i class="fa fa-facebook"></i> </a>
+            <a href="http://www.facebook.com" class="twitter" target="_blank"><i class="fa fa-twitter"></i> </a>
+            <a href="http://www.facebook.com" class="gplus" target="_blank"><i class="fa fa-google-plus-square"></i> </a>
+            <a href="http://www.facebook.com" class="you" target="_blank"><i class="fa fa-youtube-square"></i> </a>
         </div>
+    </div>
 
 
-        <div class="grid-item col-sm-4 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/martian2015.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">English Movies</h3>
-            </div>
+    <div class="row grid-carousel">
+    {% for category in categories %}
+        <div class="col-sm-3 box">
+            <a href="{{ path('movie_app_category', { 'id':category.id }) }}">
+                <img src="{{ asset('bundles/movieapp/images/posters/peanuts.jpg') }}" class="img-responsive">
+                     <div class="overbox">
+                         <h3 class="title overtext">{{ category.name }}</h3>
+                     </div>
+             </a>
         </div>
-        <div class="grid-item col-sm-4 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/bajirao.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">Hindi Movies</h3>
-            </div>
-        </div>
-        <div class="grid-item col-sm-4 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/tvseries.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">Tv Series</h3>
-            </div>
-        </div>
+        {% endfor %}
 
-       <div class="grid-item col-sm-4 box">
-      <img src="{{ asset('bundles/movieapp/images/posters/musicvideo.jpg') }}" class="img-responsive">
-      <div class="overbox">
-          <h3 class="title overtext">Music Videos</h3>
-      </div>
-  </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <h2 class=""><span class="styled">Latest</span> Movies</h2>
+            <div class="row">
+                <!-- movie blocks... columns are nested, so edit at your own peril! -->
+                {% for movie in movies %}
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12 block">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="{{ path('movie_app_movie', { 'id':movie.id }) }}">
+                                        <div class="img-thumbnail thumb-holder">
+                                            <img src="{{ asset('/images/movies/') }}{{ movie.imageName|default('300x300.png')}}" class="img-responsive">
+                                        </div>
+                                     </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="{{ path('movie_app_movie', { 'id':movie.id }) }}">
+                                        {{ movie.name }}</a><br/>
+                                    Release (RIP): {{ movie.fileFormat }}<br/>
+                                    Uploaded At: {{ movie.createdAt|date("d F, Y") }}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+                <!-- each movie blovk ends here -->
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="http://placehold.it/300x600" class="img-responsive">
+                </div>
+            </div>
+            <div class="row m-t-md">
+                <div class="col-md-12">
+                    <img src="http://placehold.it/300x300" class="img-responsive">
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

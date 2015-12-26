@@ -1,3 +1,9 @@
+fos_user:
+    db_driver:      orm
+    firewall_name:  main
+    user_class:     MovieAppBundle\Entity\User
+    group:
+        group_class: MovieAppBundle\Entity\UserGroup
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
@@ -10,7 +16,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -41,7 +47,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: '%kernel.debug%'
-    bundles:        [MovieAppBundle]
+    bundles:        [MovieAppBundle,FOSUserBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
