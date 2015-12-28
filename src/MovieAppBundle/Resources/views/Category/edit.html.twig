@@ -1,16 +1,13 @@
-{% extends '::base.html.twig' %}
+{% extends '::adminbase.html.twig' %}
 
 {% block body -%}
-    <h1>Category edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('category') }}">
+    <h1>Category edit  <a href="{{ path('category') }}" class="btn-primary btn pull-right">
             Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        </a></h1><br/>
+    {{ form(edit_form) }}
+    <div>
+        {{ form(delete_form) }}
+    </div>
+
+
 {% endblock %}

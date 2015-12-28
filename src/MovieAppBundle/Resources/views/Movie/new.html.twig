@@ -1,15 +1,11 @@
 {% extends '::adminbase.html.twig' %}
 
 {% block body -%}
-    <h1>Movie creation</h1>
+    <h1>Movie creation <a href="{{ path('movies') }}" class="btn-primary btn">
+            Back to the list
+        </a></h1>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('movies') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+
 {% endblock %}

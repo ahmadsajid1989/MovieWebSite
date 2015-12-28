@@ -4,6 +4,7 @@ namespace MovieAppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Category
  */
@@ -28,6 +29,14 @@ class Category
      * @var \Doctrine\Common\Collections\Collection
      */
     private $movies;
+
+
+
+    /*
+     * @var boolean
+     */
+
+    private $menu;
 
     /**
      * Constructor
@@ -137,4 +146,25 @@ class Category
     {
         return $this->getName() ? $this->getName() : "";
     }
+
+
+
+    /**
+     * @param $menu
+     * @return mixed
+     */
+    public function setMenu($menu){
+
+       return $this->menu = $menu;
+   }
+
+    /**
+     * @return mixed
+     */
+    public function getMenu(){
+
+        return $this->menu;
+    }
+
+
 }

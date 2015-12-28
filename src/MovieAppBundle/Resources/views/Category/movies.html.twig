@@ -3,7 +3,10 @@
     {#{{ dump(entities) }}#}
     <div class="row">
         <div class="col-md-12">
-            <h2>Bangla Movies</h2>
+    {% for entity in entities %}
+            <h2>{{ entity.category.name }}</h2>
+        {% endfor %}
+
         </div>
     </div>
 
@@ -49,48 +52,24 @@
         <div class="col-md-6">
             <h2>All Categories</h2>
         </div>
-        <div class="col-md-6 text-right">
-            Social icons
+        <div class="col-md-6 text-right social">
+            <a href="http://www.facebook.com" class="fb" target="_blank"><i class="fa fa-facebook"></i> </a>
+            <a href="http://www.facebook.com" class="twitter" target="_blank"><i class="fa fa-twitter"></i> </a>
+            <a href="http://www.facebook.com" class="gplus" target="_blank"><i class="fa fa-google-plus-square"></i> </a>
+            <a href="http://www.facebook.com" class="you" target="_blank"><i class="fa fa-youtube-square"></i> </a>
         </div>
     </div>
     <div class="row grid-carousel">
-        <div class="col-sm-3 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/peanuts.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">Movie of the day</h3>
+        {% for category in categories %}
+            <div class="col-sm-3 box">
+                <a href="{{ path('movie_app_category', { 'id':category.id }) }}">
+                    <img src="{{ asset('bundles/movieapp/images/posters/peanuts.jpg') }}" class="img-responsive">
+                    <div class="overbox">
+                        <h3 class="title overtext">{{ category.name }}</h3>
+                    </div>
+                </a>
             </div>
-        </div>
-        <div class="col-sm-3 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/aamarami.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">Bangla Movies</h3>
-            </div>
-        </div>
-        <div class="col-sm-3 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/martian2015.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">English Movies</h3>
-            </div>
-        </div>
-        <div class="col-sm-3 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/hindi.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">Hindi Movies</h3>
-            </div>
-        </div>
-        <div class=" col-sm-3 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/tvseries.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">Tv Series</h3>
-            </div>
-        </div>
-
-        <div class="col-sm-3 box">
-            <img src="{{ asset('bundles/movieapp/images/posters/musicvideo.jpg') }}" class="img-responsive">
-            <div class="overbox">
-                <h3 class="title overtext">Music Videos</h3>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
 

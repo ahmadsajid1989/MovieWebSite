@@ -1,8 +1,8 @@
-movie_app_tags:
+movie_app_admin_tags:
     resource: "@MovieAppBundle/Resources/config/routing/tags.yml"
     prefix:   /admin/tags
 
-movie_app_genre:
+movie_app_admin_genre:
     resource: "@MovieAppBundle/Resources/config/routing/genre.yml"
     prefix:   /admin/genre
 
@@ -15,7 +15,7 @@ movie_app_admin_movies:
     prefix:   /admin/movies
 
 movie_app_homepage:
-    path:     /hello/{name}
+    path:     /
     defaults: { _controller: MovieAppBundle:Default:index }
 
 movie_app_category:

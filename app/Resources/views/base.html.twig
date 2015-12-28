@@ -21,10 +21,10 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body>
+    <body class="front">
     <div class="container">
         <!--block navigation-->
-        <nav class="navbar  navbar-container ">
+        <nav class="navbar navbar-container navbar-inverse ">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -33,15 +33,46 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand">Project name</a>
+                    <a href="{{ path('movie_app_homepage') }}" class="navbar-brand">Project name</a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Bangla Movies</a></li>
-                        <li><a href="#about">English Movies</a></li>
-                        <li><a href="#contact">Hindi Movies</a></li>
-                        <li><a href="#contact">Tamil Movies</a></li>
-                        <li><a href="#contact">Tv Series</a></li>
+                        <li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Movies</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('movie_app_category', { 'id': 1 }) }}">Bangla Movies</a></li>
+                                <li><a href="{{ path('movie_app_category', { 'id': 2 }) }}">Kolkata Bangla Movies</a></li>
+                                <li><a href="{{ path('movie_app_category', { 'id': 2 }) }}">English Movies</a></li>
+                                <li><a href="{{ path('movie_app_category', { 'id': 4 }) }}">Hindi Movies</a></li>
+                                <li><a href="{{ path('movie_app_category', { 'id': 7 }) }}">Tamil Movies</a></li>
+                                <li><a href="{{ path('movie_app_category', { 'id': 8 }) }}">Tamil Hindi Movies</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="# " class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Natok</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Bangla Single Natok</a></li>
+                                <li><a href="#">Bangla Drama Serial</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TV Series</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">English Series</a></li>
+                                <li><a href="#">Hindi TV Series</a></li>
+                                <li><a href="#">Foreign TV Series</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Songs</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">MP3 Songs</a></li>
+                                <li><a href="#">Video Songs</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi-Res Files</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Blu-Ray</a></li>
+                                <li><a href="#">720p</a></li>
+                                <li><a href="#">1080p</a></li>
+                            </ul>
+                        </li>
                         {#<li class="dropdown">
                             <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">

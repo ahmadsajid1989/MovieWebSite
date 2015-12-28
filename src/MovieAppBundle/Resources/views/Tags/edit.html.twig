@@ -1,16 +1,11 @@
-{% extends '::base.html.twig' %}
+{% extends '::adminbase.html.twig' %}
 
 {% block body -%}
-    <h1>Tags edit</h1>
+    <h1>Tags edit <a href="{{ path('tags') }}" class="btn-primary btn">
+            Back to the list
+        </a></h1>
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('tags') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+   {{ form(delete_form) }}
 {% endblock %}

@@ -1,16 +1,14 @@
-{% extends '::base.html.twig' %}
+{% extends '::adminbase.html.twig' %}
 
 {% block body -%}
-    <h1>Genre edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('genre') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Edit Genre  <a href="{{ path('genre') }}" class="btn btn-primary pull-right">
+                    Back to the list
+                </a></h1>
+<br/>
+            {{ form(edit_form) }}
+            {{ form(delete_form) }}
+        </div>
+    </div>
 {% endblock %}

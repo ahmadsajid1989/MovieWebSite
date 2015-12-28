@@ -1,15 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends '::adminbase.html.twig' %}
 
 {% block body -%}
-    <h1>Tags creation</h1>
+    <h1>Create Tag  <a href="{{ path('tags') }}" class="btn btn-primary">
+            Back to the list
+        </a></h1>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('tags') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

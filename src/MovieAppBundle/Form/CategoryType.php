@@ -17,6 +17,8 @@ class CategoryType extends AbstractType
         $builder
             ->add('name')
             ->add('slug')
+            //->add('imageFile', 'file', array('label' => 'Upload Thumbnail', 'required'=> false))
+            ->add('menu')
         ;
     }
     

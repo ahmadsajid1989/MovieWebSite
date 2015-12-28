@@ -40,6 +40,7 @@ class MovieType extends AbstractType
             ->add('director','text', array('label' => 'Director','required'=> false))
             ->add('cast','text', array('label' => 'Actor/Actress'))
             ->add('file_format','choice',array('choices'=> array(
+                'BluRay' => 'Blu-Ray',
                 '1080p' => '1080p',
                 '720p'  =>  '720p',
                 '480p'  =>  '480p',

@@ -227,6 +227,7 @@ class CategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $repository = $em->getRepository('MovieAppBundle:Movie');
+        $categories = $em->getRepository('MovieAppBundle:Category')->findAll();
 
         $movies = $repository->findBy(
             array('category' => $id)
@@ -234,6 +235,7 @@ class CategoryController extends Controller
 
         return $this->render('MovieAppBundle:Category:movies.html.twig', array(
             'entities' => $movies,
+            'categories' => $categories,
         ));
 
 
