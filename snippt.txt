@@ -1,0 +1,81 @@
+php app/console generate:bundle --namespace=MovieAppBundle --format=yml
+
+MovieAppBundle
+
+
+
+// to generate entity class
+php app/console doctrine:generate:entities MovieAppBundle
+
+// to generate database schema
+php app/console doctrine:schema:update --force
+
+//to load fixture
+php app/console doctrine:fixtures:load
+
+//clear cache
+
+php app/console cache:clear --env=dev
+
+php app/console doctrine:generate:crud --entity=MovieAppBundle:Content --route-prefix=bbd_content --with-write --format=yml --overwrite
+
+//debug routing
+
+php app/console router:debug
+
+
+!;[&K-{-T83N
+!;[&K-{-T83n kaltura
+
+//asset update
+php app/console asset:install
+
+
+php app/console doctrine:generate:entities MovieAppBundle:User --path /src
+
+php app/console fos:user:create --super-admin ahmad ahmad@bongobd ahmad123
+
+php app/console bongo:load:content content.csv
+
+name,sex,priority,bday,bmonth,byear,dod_day,dod_month,dod_year,birth_place,real_name,debut,bio_english,bio_bangla
+
+DELETE FROM `episodes`;
+
+DELETE FROM `albums_to_contents`;
+
+DELETE FROM `publish_media`;
+
+DELETE FROM `cast_and_crews_to_artists`;
+
+DELETE FROM `cast_and_crew`;
+
+DELETE FROM `content`;
+
+service php-fpm restart
+service nginx restart
+service mysqld restart
+/usr/sbin/setsebool httpd_can_network_connect=1
+
+FLUSHDB
+
+php app/console doctrine:query:dql
+
+php55w-
+
+
+php app/console bongo:run:kaltura
+
+git config --local core.autocrlf false
+
+php app/console bongo:load:kaltura:content (add kaltura id to content)
+
+php app/console bongo:run:kaltura:episode  (add kaltura id to episodes)
+php app/console bongo:batch:update:episode (update unique id)
+php app/console bongo:batch:youtube:update (update youtube)
+
+systemctl start mariadb
+
+mysqldump --databases bongoapp --master-data=2  --single-transaction --order-by-primary -r backup.sql -u root -p
+
+
+
